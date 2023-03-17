@@ -1,0 +1,10 @@
+node_modules
+dist
+.env.test
+yarn-error.log
+.vscode
+coverage
+temp
+src/.DS_Store
+__mocks__/.DS_Store
+.DS_Store

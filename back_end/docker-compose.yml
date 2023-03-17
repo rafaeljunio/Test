@@ -1,0 +1,33 @@
+version: "3.3"
+
+services:
+  # database:
+  #   image: animasales/app-database
+  #   container_name: animasales_database
+  #   restart: always
+  #   ports:
+  #     - 1433:1433
+  #   env_file:
+  #     - ./.env
+  #   environment:
+  #     - ACCEPT_EULA=Y
+  #     - MSSQL_SA_PASSWORD=${DATABASE_PASSWORD}
+
+  app:
+    build: .
+    image: animasales/app-backend
+    container_name: animasales_api
+    restart: always
+    ports:
+      - 3433:3433
+      - 9100:9100
+    volumes:
+      - .:/usr/app
+      - /usr/app/node_modules
+    env_file:
+      - ./.env
+    command: sh -c "yarn && yarn build && yarn dev"
+    # links:
+    #   - database
+    # depends_on:
+    #   - database
